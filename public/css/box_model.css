@@ -1,0 +1,84 @@
+body {
+    font-family: 'Slabo 27px', serif;
+    color: white;
+}
+
+h1 {
+    text-decoration: underline;
+}
+
+.clearfix {
+    clear: left;
+}
+
+.arrow  {
+    position: relative;
+    top: -80px;
+    left: 35px;
+}
+
+.ribbon {  
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}
+
+#red {
+    background-color: red;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    float: left;
+}
+
+#orange {
+    background-color: orange;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    float: left;  
+}
+
+#yellow {
+    background-color: yellow;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    float: left;
+}
+
+#green {
+    background-color: green;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    float: left;
+}
+
+#blue {
+    background-color: blue;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    float: left;
+}
+
+#violet {
+    background-color: violet;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    float: left;
+}
