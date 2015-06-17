@@ -6,21 +6,21 @@
 <body>
     <h1>User Interaction</h1>
 <script type="text/javascript">
+    "use strict";
+    var yourName;
+        do {
+            yourName = prompt("What is your name?");
+        } while (!yourName);
 
-var name;
-    do {
-        name = prompt("What is your name?");
-    } while (!name);
+    alert("Welcome to the page, " + yourName);
 
-alert("Welcome to the page, " + name);
+    var confirmed = confirm("Do you like Pizza?");
 
-var confirmed = confirm("Do you like Pizza?");
-
-if (confirmed) {
-    alert("cool");
-} else {
-    alert("seriously?");
-}
+    if (confirmed) {
+        alert("cool");
+    } else {
+        alert("seriously?");
+    }
 
 
 </script>
