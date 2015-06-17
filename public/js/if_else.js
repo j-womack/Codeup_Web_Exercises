@@ -17,10 +17,11 @@ if (color === 'red') {
 } else if (color === 'blue') {
     console.log("Blue --> Sky");
 } else {
-    console.log("Who's to say?");
+    console.log("I'm not sure what " + color + " is...");
 }
 
-// var message = (color == favorite) ? "This is my favorite color" : "";
+var statement = (color == favorite) ? "This is my favorite color" : "";
+console.log(statement);
 // TODO: When a color is encountered log a message that tells the color, and an object of that color.
 //       Example: Blue is the color of the sky.
 
