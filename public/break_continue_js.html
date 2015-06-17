@@ -14,7 +14,7 @@ var random = Math.floor((Math.random()*50)+1);
 } console.log("The random odd number to skip is: " + random);
 
 for (var i = 1; i <= 50; i++) {
-    if (i % 2 !== 1) {
+    if (i % 2 == 0) {
         continue;
     }
     if (i == random) {
