@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Objects JSON</title>
+</head>
+<body>
+    <h1>Objects JSON</h1>
+    <script type="text/javascript">
+    "use strict";
+    var books = [{
+        "title": "Gravity's Rainbow",
+        "author": {
+            "firstName": "Thomas",
+            "lastName": "Pynchon"
+        }
+    },{
+        "title": "The New York Trilogy",
+        "author": {
+            "firstName": "Paul",
+            "lastName": "Auster"
+        }
+    },{
+        "title": "White Noise",
+        "author": {
+            "firstName": "Don",
+            "lastName": "Delillo"
+        }
+    },{
+        "title": "Finnegan's Wake",
+        "author": {
+            "firstName": "James",
+            "lastName": "Joyce"
+        }
+    },{
+        "title": "The Sirens of Titan",
+        "author": {
+            "firstName": "Kurt",
+            "lastName": "Vonnegut"
+        }
+    }];
+console.log(books);
+
+for (var i = 0; i < books.length; i++) {
+    console.log("Book #" + (i+1));
+    console.log("Title: " + books[i].title);
+    console.log("Author: " + books[i].author.firstName + " " + books[i].author.lastName);
+};
+
+
+
+    </script>
+
+</body>
+</html>

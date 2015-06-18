@@ -7,7 +7,7 @@
     <h1>Split/Join</h1>
 <script type="text/javascript">
     "use strict";
-    (function(){
+    // (function(){
         // todo:
         // Copy the array of planets you created in the last lesson.
         // todo: Join the planets array with pipes (|) to create a variable named 'planetsAsString'.
@@ -18,7 +18,22 @@
 
         console.log(planetsAsString);
         console.log(planetsAsArray);
-    })();
+
+        function reverseArray(array) {
+            var reversedArray = [];
+            var removed;
+            for (var i=(array.length-1); i >= 0; i--) {
+                removed = array.splice(i,1);
+                removed = removed.join('');
+                reversedArray.push(removed);
+// console.log(i);
+// console.log("step by step removal: " + removed);
+// console.log("step by step addition: " + reversedArray);
+            }
+            console.log(reversedArray);
+        }
+        reverseArray(planets);
+    // })();
 </script>
 </body>
 </html>
