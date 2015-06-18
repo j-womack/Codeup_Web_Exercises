@@ -9,21 +9,21 @@
     <script type="text/javascript">
         "use strict";
         (function() {
-
-            var myName = 'vbgiuarnoiguaciung';
             function sayHello(name) {
                 console.log("Hello, my name is " + name);
             }
-            sayHello(myName);
-
-            var message;
-            var num = Math.floor((Math.random()*100)+1);
             function isOdd(num) {
                 return message = (num % 2 == 1) ? console.log("The random number " + num + " is odd.") : console.log("The random number " + num + " is not odd."); 
             }
+       
+            var num = Math.floor((Math.random()*100)+1);
+            var myName = 'vbgiuarnoiguaciung';
+            var message;
+
+            sayHello(myName);
 
             isOdd(num);
-
+       
         })();
         console.log(myName);
     </script>
