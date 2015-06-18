@@ -10,19 +10,19 @@
         "use strict";
         (function() {
             function sayHello(name) {
-                console.log("Hello, my name is " + name);
+                return("Hello, my name is " + name);
             }
             function isOdd(num) {
-                return message = (num % 2 == 1) ? console.log("The random number " + num + " is odd.") : console.log("The random number " + num + " is not odd."); 
+                return message = (num % 2 == 1) ? ("The random number " + num + " is odd.") : ("The random number " + num + " is not odd."); 
             }
        
             var num = Math.floor((Math.random()*100)+1);
             var myName = 'vbgiuarnoiguaciung';
-            var message;
+            var message = sayHello(myName);
 
-            sayHello(myName);
+            console.log(message);
 
-            isOdd(num);
+            console.log(isOdd(num));
        
         })();
         console.log(myName);
