@@ -1,0 +1,31 @@
+[{
+        "title": "Gravity's Rainbow",
+        "author": {
+            "firstName": "Thomas",
+            "lastName": "Pynchon"
+        }
+    },{
+        "title": "The New York Trilogy",
+        "author": {
+            "firstName": "Paul",
+            "lastName": "Auster"
+        }
+    },{
+        "title": "White Noise",
+        "author": {
+            "firstName": "Don",
+            "lastName": "Delillo"
+        }
+    },{
+        "title": "Finnegan's Wake",
+        "author": {
+            "firstName": "James",
+            "lastName": "Joyce"
+        }
+    },{
+        "title": "The Sirens of Titan",
+        "author": {
+            "firstName": "Kurt",
+            "lastName": "Vonnegut"
+        }
+    }];

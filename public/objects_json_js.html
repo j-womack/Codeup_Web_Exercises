@@ -40,15 +40,19 @@
     }];
 console.log(books);
 
-for (var i = 0; i < books.length; i++) {
-    console.log("Book #" + (i+1));
-    console.log("Title: " + books[i].title);
-    console.log("Author: " + books[i].author.firstName + " " + books[i].author.lastName);
-};
+books.forEach(function(element, index, array){
+    console.log("Book #" + (index + 1));
+    console.log("Title: " + element.title);
+    console.log("Author: " + element.author.firstName + " " + element.author.lastName);
+    console.log("-------");
+});
 
-
-
+// WITH A 'for' LOOP INSTEAD OF 'forEach'
+// for (var i = 0; i < books.length; i++) {
+//     console.log("Book #" + (i+1));
+//     console.log("Title: " + books[i].title);
+//     console.log("Author: " + books[i].author.firstName + " " + books[i].author.lastName);
+// };
     </script>
-
 </body>
 </html>
