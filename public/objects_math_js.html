@@ -8,7 +8,7 @@
 <script type="text/javascript">
     "use strict";
     // create a circle object
-    var area;
+    
     var circle = {
         radius: 3,
         getArea: function () {
@@ -20,10 +20,9 @@
         logInfo: function (round) {
             // todo: complete this method. if round is true, round the result to the nearest integer.
             if (round == true) {
-                area = Math.round(circle.getArea());
-                console.log('Area of a circle with radius: ' + this.radius + ', is: ' + area);
+                console.log('Area of a circle with radius: ' + this.radius + ', is: ' + Math.round(this.getArea()));
             } else {
-                console.log ('Area of a circle with radius: ' + this.radius + ', is: ' + circle.getArea());
+                console.log ('Area of a circle with radius: ' + this.radius + ', is: ' + this.getArea());
             }
         }
     }
