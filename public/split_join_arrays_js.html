@@ -24,8 +24,7 @@
             var removed;
             for (var i=(array.length-1); i >= 0; i--) {
                 removed = array.splice(i,1);
-                removed = removed.join('');
-                reversedArray.push(removed);
+                reversedArray.push(removed[0]);
                     // console.log(i);
                     // console.log("step by step removal: " + removed);
                     // console.log("step by step addition: " + reversedArray);
