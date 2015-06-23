@@ -3,94 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <title>Calculator</title>
+    <title>Calc Test</title>
 </head>
 <body>
     <div class="container">
-
-        <h1>Calculator</h1>
-
-        <p class="col-xs-8 row">
-            <input type="text" name="firstoperand" id="firstoperand" readonly></input>
-            <input type="text" name="operator" id="operator" readonly></input>
-            <input type="text" name="secondoperand" id="secondoperand" readonly></input>
-        </p>
-
-        <div class="col-xs-8 row">
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn1">1</button>
+        <h1>Calc Test!</h1>
+        <div id="calculator" style="width:210px">
+            <div id="inputRow" style="width:210px">
+                <input type="text" style="width:85px" name="firstOperand" id="firstOperand" value="" readonly>
+                <input type="text" style="width:15px" name="operator" id="operator" value="" readonly>
+                <input type="text" style="width:85px" name="secondOperand" id="secondOperand" value="" readonly>
             </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn2">2</button>
+
+            <div id="firstRow" style="width:210px">
+                <button type="button" class="btn btn-primary btn-lg" id="btn1" style="width:44px">1</button>
+                <button type="button" class="btn btn-primary btn-lg" id="btn2" style="width:44px">2</button>
+                <button type="button" class="btn btn-primary btn-lg" id="btn3" style="width:44px">3</button>
+                <button type="button" class="btn btn-primary btn-lg operation" id="btnPlus" style="width:44px">+</button>
             </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn3">3</button>
+
+            <div id="secondRow" style="width:210px">
+                <button type="button" class="btn btn-primary btn-lg" id="btn4" style="width:44px">4</button>
+                <button type="button" class="btn btn-primary btn-lg" id="btn5" style="width:44px">5</button>
+                <button type="button" class="btn btn-primary btn-lg" id="btn6" style="width:44px">6</button>
+                <button type="button" class="btn btn-primary btn-lg operation" id="btnMinus" style="width:44px">-</button>
             </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btnPlus">+</button>
+
+            <div id="thirdRow" style="width:210px">
+                <button type="button" class="btn btn-primary btn-lg" id="btn7" style="width:44px">7</button>
+                <button type="button" class="btn btn-primary btn-lg" id="btn8" style="width:44px">8</button>
+                <button type="button" class="btn btn-primary btn-lg" id="btn9" style="width:44px">9</button>
+                <button type="button" class="btn btn-primary btn-lg operation" id="btnMultiply" style="width:44px">*</button>
+            </div>
+
+            <div id="fourthRow" style="width:210px">
+                <button type="button" class="btn btn-primary btn-lg" id="btnClear" style="width:44px">C</button>
+                <button type="button" class="btn btn-primary btn-lg" id="btn0" style="width:44px">0</button>
+                <button type="button" class="btn btn-primary btn-lg" id="btnEquals" style="width:44px">=</button>
+                <button type="button" class="btn btn-primary btn-lg operation" id="btnDivide" style="width:44px">/</button>
             </div>
         </div>
-
-        <div class="col-xs-8 row">
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn4">4</button>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn5">5</button>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn6">6</button>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btnMinus">-</button>
-            </div>
-        </div>
-
-        <div class="col-xs-8 row">
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn7">7</button>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn8">8</button>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn9">9</button>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btnMultiply">*</button>
-            </div>
-        </div>
-
-        <div class="col-xs-8 row">
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btnClear">C</button>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btn0">0</button>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btnEquals">=</button>
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary btn-lg" id="btnDivide">/</button>
-            </div>
-        </div>
-
     </div>
-
 <script type="text/javascript">
     "use strict";
     (function(){
-        var firstoperand = document.getElementById('firstoperand');
-        document.getElementById('btn1').addEventListener('click',
+        var firstOperand = document.getElementById('firstOperand');
+        var operator = document.getElementById('operator');
+        var secondOperand = document.getElementById('secondOperand');
+        operator.value = null;
+        
+        document.getElementById('btnPlus').addEventListener('click',
             function(){
-                firstoperand.innerHTML = "1";
+                operator.value = "+";
+            }, false);
+        document.getElementById('btnMinus').addEventListener('click',
+            function(){
+                operator.value = "-";
+            }, false);
+        document.getElementById('btnMultiply').addEventListener('click',
+            function(){
+                operator.value = "*";
+            }, false);
+        document.getElementById('btnDivide').addEventListener('click',
+            function(){
+                operator.value = "/";
             }, false);
 
+        document.getElementById('btn1').addEventListener('click',
+            function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 1;
+                } else {
+                    secondOperand.value += 1;
+                }
+            }, false);
+        document.getElementById('btn2').addEventListener('click',
+                function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 2;
+                } else {
+                    secondOperand.value += 2;
+                }
+            }, false);
+        document.getElementById('btn3').addEventListener('click',
+            function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 3;
+                } else {
+                    secondOperand.value += 3;
+                }
+            }, false);
+        document.getElementById('btn4').addEventListener('click',
+            function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 4;
+                } else {
+                    secondOperand.value += 4;
+                }
+            }, false);
+        document.getElementById('btn5').addEventListener('click',
+            function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 5;
+                } else {
+                    secondOperand.value += 5;
+                }
+            }, false);
+        document.getElementById('btn6').addEventListener('click',
+            function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 6;
+                } else {
+                    secondOperand.value += 6;
+                }
+            }, false);
+        document.getElementById('btn7').addEventListener('click',
+            function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 7;
+                } else {
+                    secondOperand.value += 7;
+                }
+            }, false);
+        document.getElementById('btn8').addEventListener('click',
+            function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 8;
+                } else {
+                    secondOperand.value += 8;
+                }
+            }, false);
+        document.getElementById('btn9').addEventListener('click',
+            function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 9;
+                } else {
+                    secondOperand.value += 9;
+                }
+            }, false);
+        document.getElementById('btn0').addEventListener('click',
+            function(){    
+                if (operator.value == !!null){
+                firstOperand.value += 0;
+                } else {
+                    secondOperand.value += 0;
+                }
+            }, false);
 
+        document.getElementById('btnEquals').addEventListener('click',
+            function(){
+                var evaluation = eval(firstOperand.value + operator.value + secondOperand.value);
+                firstOperand.value = evaluation;
+                operator.value = "";
+                secondOperand.value = "";
+            }, false);
 
+        document.getElementById('btnClear').addEventListener('click',
+            function(){
+                firstOperand.value = "";
+                operator.value = "";
+                secondOperand.value = "";
+            }, false);
     })();
 </script>
-
 </body>
 </html>
