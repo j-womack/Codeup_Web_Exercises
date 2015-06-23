@@ -29,10 +29,10 @@
         </p>
         <hr>
         <div class="col-md-6 row">
-                <button type="button" class="btn btn-primary" id="btn1">Click to change Main Header</button>
-                <button type="button" class="btn btn-primary" id="btn2">Click to change Sub Header</button>
-                <button type="button" class="btn btn-primary" id="btn3">Click to change list colors</button>
-                <button type="button" class="btn btn-primary" id="btn4">Click to change paragraph text</button>
+            <button type="button" class="btn btn-primary" id="btn1">Click to change Main Header</button>
+            <button type="button" class="btn btn-primary" id="btn2">Click to change Sub Header</button>
+            <button type="button" class="btn btn-primary" id="btn3">Click to change list colors</button>
+            <button type="button" class="btn btn-primary" id="btn4">Click to change paragraph text</button>
         </div>
 
         <script>
@@ -44,8 +44,8 @@
                 // TODO: Set inner html of mainHeader to "JavaScript is Cool"
                 
                 var button1 = function() {
-                        mainHeader.innerHTML = "JS is cool?";
-                        mainHeader.setAttribute("class", "col-md-12 text-center");
+                    mainHeader.innerHTML = "JS is cool?";
+                    mainHeader.setAttribute("class", "col-md-12 text-center");
                 }
                 var btn1 = document.getElementById('btn1');
                 btn1.addEventListener('click', button1, false);
@@ -67,9 +67,9 @@
                 // TODO: Set text color on every other list item to grey
 
                 var button3 = function() {
-                for (var i = 0; i < listItems.length; i++) {
-                    if (i%2 == 0){
-                        listItems[i].style.color = "#F00";
+                    for (var i = 0; i < listItems.length; i++) {
+                        if (i%2 == 0){
+                            listItems[i].style.color = "#F00";
                     } 
                 }
                 
@@ -90,8 +90,8 @@
 
                 // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
                 var button4 = function() {
-                subParagraphs[0].innerHTML = "<h2>Mission Accomplished!</h2>";
-                subParagraphs[0].style.color = "green"
+                    subParagraphs[0].innerHTML = "<h2>Mission Accomplished!</h2>";
+                    subParagraphs[0].style.color = "green"
                 }
                 var btn4 = document.getElementById('btn4');
                 btn4.addEventListener('click', button4, false);
