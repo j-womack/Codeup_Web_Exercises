@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+  #map-canvas {
+    width: 480px;
+    height: 480px;
+  }
+  </style>
+</head>
+<body>
+  <!-- div to hold map -->
+    <div id="map-canvas"></div>
+
+  <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyXXL7QfMqigbY0nVRAjbrKh4BWueCokE"></script>
+
+  <!-- Script to show address on map -->
+    <script type="text/javascript">
+        var address = "2657 N Kedzie, Chicago, IL";
+        var geocoder = new google.maps.Geocoder();
+
+  // Geocode our address
+        geocoder.geocode( { 'address': address}, function(results, status) {
+      // Check for a successful result
+            if (status == google.maps.GeocoderStatus.OK) {
+        // Set our map options
+            var mapOptions = {
+          // Set the zoom level
+            zoom: 18,
+          // This sets the center of the map at our location
+            center: results[0].geometry.location,
+          // Show this map in satellite view
+            mapTypeId: google.maps.MapTypeId.SATELLITE
+            }
+            // Render the map
+            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: results[0].geometry.location,
+                map: map
+            });
+            var infowindow = new google.maps.InfoWindow({
+                content: 'Longman & Eagle'
+            });
+            infowindow.open(map,marker);
+            } else {
+        // Show an error message with the status if our request fails
+            alert("Geocoding was not successful - STATUS: " + status);
+            }
+        });
+    // Set our map options
+    // var mapOptions = {
+    //   // Set the zoom level
+    //   zoom: 18,
+    //   // This sets the center of the map at our location
+    //   center: { lat: 29.4284595, lng: -98.492433 }
+    // };
+    // // Render the map
+
+  </script>
+</body>
+</html>
