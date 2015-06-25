@@ -8,12 +8,14 @@
         text-align: center;
     }
     body {
-        background-image: url("/img/swirl_pattern.png");
+        background-image: url("/img/dark_embroidery.png");
+        color: #FBF5F3;
     }
     </style>
 </head>
 <body>
-    <h1 class="codeup">jQuery Stuff</h1>
+    <main class="text">
+    <h1>jQuery Stuff</h1>
 
     <div id="content">
         <p class="mainText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -37,12 +39,17 @@
         <h3>NOTICE</h3>
         <p>This is an important message!</p>
     </div>
+    <input type="text" id="text_field"></input>
     <div class="not-important">
         <h2>Lorem Ipsum</h2>
         <p>Lorem ipsum dolor sit amet, incididunt ut <span class="important">labore et dolore magna aliqua.</span>, quis ut aliquip ex ea commodo.</p>
     </div>
     <p class="important">This is also very important.</p>
 
+
+
+
+</main>
         
 
     <script type="text/javascript" src="/js/jquery.js"></script>
@@ -50,34 +57,92 @@
         $(document).ready(function(){
             // alert('jQuery has verified the onload event!')
 
-            var htmlMainListContent = $('#mainList').html();
-            var htmlMainListText = $('#mainList').text();
-            console.log('The html inside of the main list is: ');
-            console.log(htmlMainListContent);
-            console.log(htmlMainListText);
-
-            $('li').css({
-                "font-size": "20px",
-                "background-color": "lavender"
+            $('h2').click(function(){
+                $(this).css({
+                    "color": "#A1E8CC"
+                });
             });
 
-            $('.codeup').css({
-                "border": "5px groove lightsteelblue",
-                "background": "#AEA",
-                "text-decoration": "underline"
+            $('h3').dblclick(function(){
+                $(this).css({
+                    "color": "#8C1939",
+                    "text-align": "right",
+                    "font-size": "4em"
+                });
             });
 
-            $('h1').css({
-                "background-color": "salmon"
+            $('.listItems').hover(
+                function(){
+                    $(this).css({
+                        "color": "#7B0828",
+                        "font-size": "2em"
+                    });
+
+                }, 
+                function(){
+                    $(this).css({
+                        "color": "#FBF5F3",
+                        "font-size": "1em"
+                })
             });
 
-            $('p').css({
-                "background-color": "papayawhip"
+            $('.codeup').hover(
+                function(){
+                    $(this).css({
+                        "color": "#8DAA9D",
+                        "font-size": "2em"
+                    });
+
+                }, 
+                function(){
+                    $(this).css({
+                        "color": "#FBF5F3",
+                        "font-size": "1em"
+                })
             });
 
-            $('h1', 'p', 'li').css({
-                "border": "1px solid black"
+            $('p').dblclick(function(){
+                $(this).css({
+                    "font-size": "18px"
+                })
             });
+
+            $('#text_field').css({
+                "color": "black"
+            });
+            $('#text_field').keydown(function(e){
+                console.log("Key down");
+                console.log(e);
+            });
+
+            // var htmlMainListContent = $('#mainList').html();
+            // var htmlMainListText = $('#mainList').text();
+            // console.log('The html inside of the main list is: ');
+            // console.log(htmlMainListContent);
+            // console.log(htmlMainListText);
+
+            // $('li').css({
+            //     "font-size": "20px",
+            //     "background-color": "lavender"
+            // });
+
+            // $('.codeup').css({
+            //     "border": "5px groove lightsteelblue",
+            //     "background": "#AEA",
+            //     "text-decoration": "underline"
+            // });
+
+            // $('h1').css({
+            //     "background-color": "salmon"
+            // });
+
+            // $('p').css({
+            //     "background-color": "papayawhip"
+            // });
+
+            // $('h1', 'p', 'li').css({
+            //     "border": "1px solid black"
+            // });
         });
     </script>
 
