@@ -6,11 +6,36 @@
 <body>
     <h1>jQuery Stuff</h1>
 
+    <div id="content">
+        <p class="mainText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <ul id="mainList">
+            <li class="listItems">Here</li>
+            <li class="listItems">Are</li>
+            <li class="listItems">Some</li>
+            <li class="listItems">List</li>
+            <li class="listItems">Items</li>
+        </ul>
+    </div>
+
+        
 
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            alert('jQuery has verified the onload event!')
+            // alert('jQuery has verified the onload event!')
+        });
+        $(document).ready(function(){
+            var htmlMainListContent = $('#mainList').html();
+            var htmlMainListText = $('#mainList').text();
+            console.log('The html inside of the main list is: ');
+            console.log(htmlMainListContent);
+            console.log(htmlMainListText);
         });
     </script>
 
