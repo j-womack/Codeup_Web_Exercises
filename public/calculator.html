@@ -89,19 +89,6 @@
 
         console.log(firstOperand);
 
-        for (var i=0; i<numbers.length; i++){
-            console.log(numbers[i].value);
-            numbers[i].addEventListener('click', function(){
-                if (!operator.value) {
-                    console.log(numbers[i]);
-                    firstOperand.value += this.value;
-                } else {
-                    secondOperand.value += this.value;
-                }
-            }, false);
-        };
-
-
 
         document.getElementById('btnPlus').addEventListener('click',
             function(){
@@ -120,6 +107,17 @@
                 operator.value = "/";
             }, false);
 
+        for (var i=0; i<numbers.length; i++){
+            console.log(numbers[i].value);
+            numbers[i].addEventListener('click', function(){
+                if (!operator.value) {
+                    firstOperand.value += this.value;
+                } else {
+                    secondOperand.value += this.value;
+                }
+            }, false);
+        };
+        
         // document.getElementById('btn1').addEventListener('click',
         //     function(){    
         //         if (!operator.value){
