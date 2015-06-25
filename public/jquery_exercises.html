@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <title>jQuery Stuff</title>
+    <style type="text/css">
+    .important {
+        text-align: center;
+    }
+    body {
+        background-image: url("/img/swirl_pattern.png");
+    }
+    </style>
 </head>
 <body>
-    <h1>jQuery Stuff</h1>
+    <h1 class="codeup">jQuery Stuff</h1>
 
     <div id="content">
         <p class="mainText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -15,13 +24,24 @@
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
         <ul id="mainList">
-            <li class="listItems">Here</li>
+            <li class="codeup">Here</li>
             <li class="listItems">Are</li>
-            <li class="listItems">Some</li>
+            <li class="codeup">Some</li>
             <li class="listItems">List</li>
-            <li class="listItems">Items</li>
+            <li class="codeup">Items</li>
         </ul>
     </div>
+    <hr>
+    <h2>Example Page</h2>
+    <div class="important">
+        <h3>NOTICE</h3>
+        <p>This is an important message!</p>
+    </div>
+    <div class="not-important">
+        <h2>Lorem Ipsum</h2>
+        <p>Lorem ipsum dolor sit amet, incididunt ut <span class="important">labore et dolore magna aliqua.</span>, quis ut aliquip ex ea commodo.</p>
+    </div>
+    <p class="important">This is also very important.</p>
 
         
 
@@ -29,13 +49,35 @@
     <script type="text/javascript">
         $(document).ready(function(){
             // alert('jQuery has verified the onload event!')
-        });
-        $(document).ready(function(){
+
             var htmlMainListContent = $('#mainList').html();
             var htmlMainListText = $('#mainList').text();
             console.log('The html inside of the main list is: ');
             console.log(htmlMainListContent);
             console.log(htmlMainListText);
+
+            $('li').css({
+                "font-size": "20px",
+                "background-color": "lavender"
+            });
+
+            $('.codeup').css({
+                "border": "5px groove lightsteelblue",
+                "background": "#AEA",
+                "text-decoration": "underline"
+            });
+
+            $('h1').css({
+                "background-color": "salmon"
+            });
+
+            $('p').css({
+                "background-color": "papayawhip"
+            });
+
+            $('h1', 'p', 'li').css({
+                "border": "1px solid black"
+            });
         });
     </script>
 
