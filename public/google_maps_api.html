@@ -17,37 +17,43 @@
 
   <!-- Script to show address on map -->
     <script type="text/javascript">
-        var address = "2657 N Kedzie, Chicago, IL";
+        var address = ["2657 N Kedzie, Chicago, IL", "800 W Randolph, Chicago, IL", "123 N Jefferson, Chicago, IL"];
+        console.log(address);
         var geocoder = new google.maps.Geocoder();
-
+        var results = [];
   // Geocode our address
-        geocoder.geocode( { 'address': address}, function(results, status) {
-      // Check for a successful result
-            if (status == google.maps.GeocoderStatus.OK) {
-        // Set our map options
-            var mapOptions = {
-          // Set the zoom level
-            zoom: 18,
-          // This sets the center of the map at our location
-            center: results[0].geometry.location,
-          // Show this map in satellite view
-            mapTypeId: google.maps.MapTypeId.SATELLITE
-            }
-            // Render the map
-            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-            var marker = new google.maps.Marker({
-                position: results[0].geometry.location,
-                map: map
-            });
-            var infowindow = new google.maps.InfoWindow({
-                content: 'Longman & Eagle'
-            });
-            infowindow.open(map,marker);
+        for (var i=0; i<address.length; i++){
+          geocoder.geocode( {'address': address[i]}, function(results, status) {
+        // Check for a successful result
+              if (status == google.maps.GeocoderStatus.OK) {
+          // Set our map options
+              var mapOptions = {
+            // Set the zoom level
+              zoom: 18,
+            // This sets the center of the map at our location
+              center: results[0].geometry.location,
+            // Show this map in satellite view
+              mapTypeId: google.maps.MapTypeId.MAP
+              }
+              // Render the map
+              var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+              for (var i=0; i<address.length; i++){
+              var marker = new google.maps.Marker({
+                  position: results[i].geometry.location,
+                  map: map
+              });
+            };
+        
             } else {
         // Show an error message with the status if our request fails
             alert("Geocoding was not successful - STATUS: " + status);
             }
-        });
+            var infowindow = new google.maps.InfoWindow({
+                content: '<em>Longman & Eagle</em>'
+            });
+            infowindow.open(map,marker);
+          })
+        };
     // Set our map options
     // var mapOptions = {
     //   // Set the zoom level
