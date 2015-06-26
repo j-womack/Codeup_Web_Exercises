@@ -2,23 +2,52 @@
 <html>
 <head>
     <title>Konami Code</title>
+    <style type="text/css">
+    .title {
+        text-align: center;   
+        color: #F55;
+    }
+    body {
+        background-image: url("/img/swirl_pattern.png");
+    }
+    </style>
 </head>
 <body>
-    <h1>Konami Code</h1>
+    <h1 class="title">Konami Code</h1>
 
     <script src="/js/jquery.js"></script>
     <script>
         "use strict";
         // $(document).ready(function(){
             var sequence = [];
+            var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
             $(document).keyup(function(event){
-                console.log(event.keyCode);
-                sequence.push(event.keycode);
-                if (sequence == [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13]){
-                    console.log("nice");
-                }
+                // console.log(event.keyCode);
+                sequence.push(event.keyCode);
+                if (sequence.length > 11){
+                    sequence.shift();
+                };
+                console.log(sequence.toString());
+
+                if (sequence.toString() == konami.toString()) {
+                    $('h1').animate({
+                            fontSize: "5em",
+                            color: "black"
+                        }, 1500);
+                    $('h1').text('You Win!')
+                 
+                };
+
+                // $(document).keypress(function(event){
+                //     for (var i = 0; i<sequence.length; i++){
+                //         if (sequence[i] == konami[i]){
+                //             console.log("nice");
+                //         };
+                //     };
+                // });
             });
         // });
+
     </script>
 </body>
 </html>
