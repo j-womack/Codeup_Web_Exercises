@@ -33,6 +33,8 @@
         <button id="btn-show">Show It</button>
 
         <button id="btn-all">Animate all</button>
+
+        <button id="btn-cat">cat</button>
     </p>
 
     <div id="animate-box" class="box"></div>
@@ -70,16 +72,34 @@
             // to happen with the `Animate all` button.
             // Refresh to start over before hitting the button.
             $('#btn-all').click(function(){
-                $('#animate-box').animate({left: "+=100"}, 1000);
                 $('#animate-box').animate({
-                    width: "-=125"
-                }, 1000);
+                    left: "+=12",
+                    top: "+=7",
+                    right: "+=15",
+                    bottom: "+=50"
+                    }, 100);
+                $('#animate-box').animate({
+                    width: "-=5",
+                    height: "-=3"
+                    }, 100);
                 $('#animate-box').animate({
                     opacity: "0"
-                }, 1000);
+                    }, 100);
                 $('#animate-box').animate({
                     opacity: "1"
-                }, 1000);
+                    }, 100);
+            });
+
+            $('#btn-cat').click(function(){
+                $('#animate-box').animate({
+                    width: "+=50",
+                    opacity: "0.5"
+                    }, 500);
+                $('#animate-box').animate({
+                    left: "+=50",
+                    width: "-=50",
+                    opacity: "1"
+                    }, 500);
             });
             
 
