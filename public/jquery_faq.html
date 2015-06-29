@@ -4,9 +4,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <title>jQuery FAQ</title>
     <style type="text/css">
-    .invisible {
-        display: none;
-    }
+        .placeholder {
+            width: 5px;
+            height: 1em;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -15,26 +17,60 @@
 
     <dl class="mainList">
         <dt>How many national parks are in the US?</dt>
-            <dd class="invisible">59</dd>
+            <dd>59</dd>
+            <div class="placeholder"></div>
         <dt>Questions?</dt>
-            <dd class="invisible">Answers</dd>
+            <dd>Answers</dd>
+            <div class="placeholder"></div>
         <dt>Questions?</dt>
-            <dd class="invisible">Answers</dd>
+            <dd>Answers</dd>
+            <div class="placeholder"></div>
         <dt>Questions?</dt>
-            <dd class="invisible">Answers</dd>
+            <dd>Answers</dd>
+            <div class="placeholder"></div>
         <dt>Questions?</dt>
-            <dd class="invisible">Answers</dd>
+            <dd>Answers</dd>
+            <div class="placeholder"></div>
         <dt>Questions?</dt>
-            <dd class="invisible">Answers</dd>
+            <dd>Answers</dd>
+            <div class="placeholder"></div>
         <dt>Questions?</dt>
-            <dd class="invisible">Answers</dd>
+            <dd>Answers</dd>
+            <div class="placeholder"></div>
         <dt>Questions?</dt>
-            <dd class="invisible">Answers</dd>
+            <dd>Answers</dd>
+            <div class="placeholder"></div>
         <dt>Questions?</dt>
-            <dd class="invisible">Answers</dd>
+            <dd>Answers</dd>
+            <div class="placeholder"></div>
         <dt>Questions?</dt>
-            <dd class="invisible">Answers</dd>
+            <dd>Answers</dd>
+            <div class="placeholder"></div>
     </dl>
+
+    <hr>
+
+    <h3 class="parkNames">Congaree</h3>
+    <ul id="congaree">
+        <li>Located in South Carolina.</li>
+        <li>Preserves the largest tract of old growth bottomland hardwood forest left in the United States.</li>
+        <li>Established in 2003.</li>
+    </ul>
+
+    <h3 class="parkNames">Guadalupe Mountains</h3>
+    <ul id="guadMtns">
+        <li>Located in Texas.</li>
+        <li>The park contains Guadalupe Peak, the highest point in Texas.</li>
+        <li>Established in 1972.</li>
+    </ul>
+
+    <h3 class="parkNames">Black Canyon of the Gunnison</h3>
+    <ul id="blkCanyon">
+        <li>Located in Colorado.</li>
+        <li>The park contains 12 miles of the 48-mile long Gunnison River.</li>
+        <li>Established in 1999.</li>
+    </ul>
+
 </main>
 
 
@@ -42,7 +78,18 @@
     <script type="text/javascript">
         "use strict";
         $('dt').click(function(){
-            $('dd').toggleClass('invisible');
+            $('dd').slideToggle();
+        });
+
+        $('#congaree').children().first().css('font-weight', 'bold');
+        $('#guadMtns').children().first().css('font-weight', 'bold');
+        $('#blkCanyon').children().first().css('font-weight', 'bold');
+
+        $('li').click(function(){
+            $(this).parent().hide();
+        });
+        $('h3').click(function(){
+            $(this).next('ul').show();
         })
 
 
