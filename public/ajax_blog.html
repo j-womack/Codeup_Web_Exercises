@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/simple-sidebar.css">
     <title>My Blog</title>
     <style type="text/css">
     body {
@@ -16,12 +17,64 @@
     #insertProducts {
         margin-top: 69px;
     }
+    .navbar-fixed-top {
+        background-color: black;
+    }
     </style>
 </head>
 <body>
-<h1 class="navbar-fixed-top col-md-12 text-left">My Blog</h1>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Some</a>
+                </li>
+                <li>
+                    <a href="#">Links</a>
+                </li>
+                <li>
+                    <a href="#">To</a>
+                </li>
+                <li>
+                    <a href="#">Take</a>
+                </li>
+                <li>
+                    <a href="#">You</a>
+                </li>
+                <li>
+                    <a href="#">Other</a>
+                </li>
+                <li>
+                    <a href="#">Places</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            
+
+
+
+
+<div class="navbar-fixed-top col-md-12 text-left">
+    <h1 class="col-md-10">My Blog</h1>
+    <a href="#menu-toggle" class="btn btn-info col-md-2" id="menu-toggle">Toggle Menu</a>
+    
+</div>
 <br>
-<div id="insertProducts" class="col-md-9"></div>
+<div id="insertProducts" class="col-md-12"></div>
+
+
     <!-- Designing the entries
     <div class="container col-md-6">
         <h3>Post title</h3>
@@ -41,10 +94,18 @@
         </div>
         <div class="tags text-right">
             <small><em>categories, categories, categories</em></small>
+            <button class="remove">Remove Post</button>
         </div>
     </div> -->
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
     "use strict";
     var ajaxRequest = $.get('/data/blog.json');
@@ -75,7 +136,8 @@
                     '<div class="tags text-right">' +
                     '<small><em>' + 
                     data[i].categories + 
-                    '</em></small>' +
+                    '</em></small>' + '<br>' +
+                    '<button id="remove">Remove Post</button>' +
                     '</div>' +
                     '</div>';
 
@@ -85,6 +147,24 @@
         });
     };
     blogPost();
+
+    $('#remove').click(function(){
+        ajaxRequest = $.get('/data/blog.json');
+        ajaxRequest.always(function(){
+            console.log('Sent');
+        });
+        ajaxRequest.fail(function(){
+            console.log('Fail');
+        })
+        ajaxRequest.done(function(data){
+
+        });
+    })
+
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
 
 </script>
 
