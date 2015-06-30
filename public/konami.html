@@ -7,18 +7,43 @@
         text-align: center;
         color: #F55;   
     }
+    .winner {
+        text-align: center;
+        color: #000;
+        opacity: 0;
+    }
     body {
         background-image: url("/img/swirl_pattern.png");
     }
+    #duck {
+        
+        position: absolute;
+        left: -400px;
+    }
+    #confetti {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        left: -400px;
+    }
+    
     </style>
+
+
 </head>
 <body>
     <h1 class="title">Konami Code</h1>
+    <h1 class="winner">You win!</h1>
+
+    <div>
+        <img src="/img/duck.png" id="duck">
+        <img src="/img/confetti.gif" id="confetti">
+    </div>
 
     <script src="/js/jquery.js"></script>
     <script>
         "use strict";
-        // $(document).ready(function(){
+        $(document).ready(function(){
             var sequence = [];
             var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
             $(document).keyup(function(event){
@@ -30,22 +55,28 @@
                 console.log(sequence.toString());
 
                 if (sequence.toString() == konami.toString()) {
-                    $('h1').animate({
-                            fontSize: "5em"
-                        }, 1500);
-                    $('h1').text('You Win!')
-                 
+                    $('.title').animate({
+                        opacity: 0
+                        }, 500);
+                    $('.winner').animate({
+                        opacity: 1,
+                        "font-size": "5em"
+                    }, 1000)
+
+                    $('body').css({
+                        "background-image": "url('/img/wave.jpg')"
+                    }, 1000)
+                    
+                    $('#duck').animate({
+                        left: "+=2000"
+                    }, 10000);
+                    $('#confetti').animate({
+                        left: "+=2000"
+                    }, 10000);
                 };
 
-                // $(document).keypress(function(event){
-                //     for (var i = 0; i<sequence.length; i++){
-                //         if (sequence[i] == konami[i]){
-                //             console.log("nice");
-                //         };
-                //     };
-                // });
             });
-        // });
+        });
 
     </script>
 </body>

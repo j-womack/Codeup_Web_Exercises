@@ -19,6 +19,13 @@
             position: relative;
             width: 250px;
         }
+
+        #follower {
+            background-color: #000;
+            height: 1px;
+            width: 1px;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
@@ -38,6 +45,9 @@
     </p>
 
     <div id="animate-box" class="box"></div>
+    <div id="follower" class="followBox"></div><br>
+    <div id="follower" class="followBox1"></div><br>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
@@ -93,15 +103,30 @@
             $('#btn-cat').click(function(){
                 $('#animate-box').animate({
                     width: "+=50",
+                    height: "-=15",
                     opacity: "0.5"
                     }, 500);
                 $('#animate-box').animate({
                     left: "+=50",
                     width: "-=50",
+                    height: "+=15",
                     opacity: "1"
                     }, 500);
             });
-            
+
+            $(document).mousemove(function(e){
+                $("#follower").animate({
+                    top: e.pageY + 'px',
+                    left: e.pageX + 'px'
+                }, 200);
+            });
+            // $(document).mousemove(function(e){
+            //     $(".followBox1").animate({
+            //         top: (e.pageY/e.pageX) + 'px',
+            //         left: e.pageX + 'px'
+            //     }, 200);
+            //     console.log(e.pageY/e.pageX*150)
+            // });
 
         })();
     
