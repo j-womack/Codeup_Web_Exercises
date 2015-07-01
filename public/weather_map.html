@@ -7,18 +7,28 @@
     body {
         background-image: url("/img/light_grey.png");
     }
-    #weatherBox {
+    #textBox {
         text-align: center;
         list-style-type: none;
-        border: 1px black;
+    }
+    #weatherBox {
+        margin: 10px;
+        padding: 0px;
     }
     .boxes {
-        width: 240px;
-        height: 280px;
-        padding: 15px;
-        margin: 10px;
+        /*width: 240px;*/
+        /*height: 280px;*/
+        padding: 2px;
+        margin: 2px;
         background-color: #686;
         color: #EEE;    
+        border: 1px black;
+    }
+    #mainContainer{
+        /*width: 900px;*/
+        background-color: #ACA;
+        padding: 0px;
+        margin: 10px;
     }
     h2 {
         margin: 5px;
@@ -27,57 +37,60 @@
 </head>
 <body>
 <div class="container">
-    <h1>Weather Map</h1>
+    <h1>Three Day Forecast</h1>
 
     <!-- Input button and submit -->
     <form id="search-form">
         <input type="text" id="yourLocation" placeholder="Enter your location" name="location" value="">
         <button type="submit" id="submitLocation" class="btn btn-default">Submit</button>
     </form>
-    <!-- Row of weather boxes -->
-    <div class="row">
-        <div class="boxes col-sm-4">
-            <p><small>Today</small></p>
-            <div id="weatherBox"class="">
+    <div id="mainContainer" class="col-lg-9">
+        <!-- Row of weather boxes -->
+        <div id="weatherBox" class="col-lg-12">
+            <!-- <div class="boxes col-sm-4">
+                <p><small>Today</small></p>
+                <div id="textBox"class=""> -->
 
-            <!--    Designing the weather box
+                <!--    Designing the weather box
 
-                <h2>title</h2>
-                <li><h3>hi/lo</h3></li>
-                <li><img src="place.hold/er.url"></li>
-                <li>Clouds: status</li>
-                <li>Humidity: percentage</li>
-                <li>Wind: speed</li>
-                <li>Pressure: bars</li>
+                    <h2>title</h2>
+                    <li><h3>hi/lo</h3></li>
+                    <li><img src="place.hold/er.url"></li>
+                    <li>Clouds: status</li>
+                    <li>Humidity: percentage</li>
+                    <li>Wind: speed</li>
+                    <li>Pressure: bars</li>
 
-                <img src=""> -->
+                    <img src=""> -->
 
+                <!-- </div>
+            </div> -->
+
+          <!--   <div class="boxes col-sm-4">
+                <p><small>Tomorrow</small></p>
+                <div id="weatherBox">
+                </div>
             </div>
-        </div>
 
-        <div class="boxes col-sm-4">
-            <p><small>Tomorrow</small></p>
-            <div id="weatherBox">
-            </div>
-        </div>
+            <div class="boxes col-sm-4">
+                <p><small>The Following Day</small></p>
+                <div id="weatherBox">
+                </div>
+            </div> -->
 
-        <div class="boxes col-sm-4">
-            <p><small>The Following Day</small></p>
-            <div id="weatherBox">
-            </div>
         </div>
-
     </div>
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
-
+    "use strict";
 // Evaluates and formats weather data for display
     function currentWeather(location) {
         var place = location;
-        var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/weather", {
+        var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
             APPID: "1908faf007c44440777aa4146e959e53",
             q: place,
+            cnt: 3,
             units: "imperial"
         });
 
@@ -91,34 +104,66 @@
         });
 
         ajaxRequest.done(function(data) {
+            console.log('Success');
             console.log(data);
-            var htmlString = "";
 
-            var title = "<h2>" + 
-                data.name + "</h2>";
+            // Keeps the append method in check
+            $('#weatherBox').html("");
 
-            var tempMaxMin = "<li><h3>" + 
-                data.main.temp_max + "°/" +
-                data.main.temp_min + 
-                "°</li></h3>";
+            // Assigns the appropriate day label
+            for(var i=0; i<data.list.length; i++){
+                var whatDay = i
+                switch(i){
+                    case 0:
+                        whatDay = "Today";
+                        break;
+                    case 1:
+                        whatDay = "Tomorrow";
+                        break;
+                    case 2:
+                        whatDay = "The Day After";
+                        break;
+                }
 
-            var icon = "<li><img src=\"http://openweathermap.org/img/w/"  + 
-                data.weather[0].icon + 
-                ".png\"></li>";
+                // Assignment of variables based on weather data
+                var htmlString = "";
 
-            var clouds = "<li>Forecast: " + data.weather[0].description + "</li>";
+                var title = "<h2>" + 
+                    data.city.name + "</h2>";
 
-            var humidity = "<li>Humidity: " + data.main.humidity + "%</li>";
+                var tempMaxMin = "<li><h3>" + 
+                    data.list[i].temp.max + "°/" +
+                    data.list[i].temp.min + 
+                    "°</li></h3>";
 
-            var wind = "<li>Wind speed: " + data.wind.speed + " mph</li>";
+                var icon = "<li><img src=\"http://openweathermap.org/img/w/"  + 
+                    data.list[i].weather[0].icon + 
+                    ".png\"></li>";
 
-            var pressure = "<li>Pressure: " + data.main.pressure + " hpa</li>";
+                var clouds = "<li>Forecast: " + data.list[i].weather[0].description + "</li>";
 
-            htmlString = title + tempMaxMin + icon + clouds + humidity + wind + pressure;
+                var humidity = "<li>Humidity: " + data.list[i].humidity + "%</li>";
 
-            $('#weatherBox').html(htmlString);
+                var wind = "<li>Wind speed: " + data.list[i].speed + " mph</li>";
+
+                var pressure = "<li>Pressure: " + data.list[i].pressure + " hpa</li>";
+
+                // Assembling data into html boxes
+                htmlString = '<div class="boxes col-lg-4">' +
+                '<p><small>' + whatDay + '</small></p>' +
+                '<div id="textBox"class="">' + 
+                title + tempMaxMin + icon + 
+                clouds + humidity + wind + 
+                pressure +
+                '</div></div>';
+
+                // Adding formatted data to html
+                $('#weatherBox').append(htmlString);
+            };
         });
     };
+
+    currentWeather('san antonio, us');
 
 // submission events
     $('#search-form').submit(function(e){
