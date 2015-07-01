@@ -30,9 +30,10 @@
     <h1>Weather Map</h1>
 
     <!-- Input button and submit -->
-    <input type="text" id="yourLocation" placeholder="Enter your location" name="location" value="">
-    <a id="submitLocation" class="btn btn-default">Submit</a>
-
+    <form id="search-form">
+        <input type="text" id="yourLocation" placeholder="Enter your location" name="location" value="">
+        <button type="submit" id="submitLocation" class="btn btn-default">Submit</button>
+    </form>
     <!-- Row of weather boxes -->
     <div class="row">
         <div class="boxes col-sm-4">
@@ -120,13 +121,8 @@
     };
 
 // submission events
-    $("#yourLocation").keyup(function(event){
-        if(event.keyCode == 13){
-            $("#submitLocation").click();
-        }
-    });
-
-    $('#submitLocation').click(function(location){
+    $('#search-form').submit(function(e){
+        e.preventDefault();
         var location = $('#yourLocation').val();
         currentWeather(location);
     });
