@@ -46,10 +46,15 @@
     <h1>Three Day Forecast</h1>
 
     <!-- Input button and submit -->
-    <form id="search-form">
+
+
+ <!--   All location done through the map now 
+        <form id="search-form">
         <input type="text" id="yourLocation" placeholder="Enter your location" name="location" value="">
         <button type="submit" id="submitLocation" class="btn btn-default">Submit</button>
-    </form>
+    </form> -->
+
+
     <div id="mainContainer" class="container">
         <!-- Row of weather boxes -->
         <div class="row">
@@ -98,13 +103,21 @@
     <script type="text/javascript">
     "use strict";
 // Evaluates and formats weather data for display
-    function currentWeather(location) {
-        var place = location;
+    var latitude = 29.4284595;
+    var longitude = -98.492433;
+    var myLatLong = new google.maps.LatLng(latitude,longitude);
+    var map;
+    var marker;
+
+    function currentWeather(latitude, longitude) {
+        // var place = location;
+        
+        console.log(latitude);
         var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
             APPID: "1908faf007c44440777aa4146e959e53",
-            q: place,
-            // lat: latitude,
-            // lon: longitude,
+            // q: place,
+            lat: latitude,
+            lon: longitude,
             cnt: 3,
             units: "imperial"
         });
@@ -178,7 +191,7 @@
         });
     };
 
-    currentWeather('san antonio, us');
+    currentWeather(latitude, longitude);
 
 // submission events
     $('#search-form').submit(function(e){
@@ -188,11 +201,6 @@
     });
 
 // Map code
-    var latitude = 29.4284595;
-    var longitude = -98.492433;
-    var myLatLong = new google.maps.LatLng(latitude,longitude);
-    var map;
-    var marker;
 
     function drawMap () {
     // Set our map options
@@ -217,6 +225,7 @@
             longitude = this.getPosition().lng();
             myLatLong = new google.maps.LatLng(latitude, longitude);
             drawMap();
+            currentWeather(latitude, longitude);
         });
     };
     drawMap();
