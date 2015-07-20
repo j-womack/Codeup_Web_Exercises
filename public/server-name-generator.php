@@ -37,17 +37,17 @@
 </head>
 <body>
     <main class='container'>
-    <h1>You should call your server:</h1>
-    <h1><?php echo strtolower(trim(randomWord('data/adjectives.txt'))) . ucfirst(trim(randomWord('data/nouns.txt'))) ?></h1>
+        <h1>You should call your server:</h1>
+        <h1><?php echo strtolower(trim(randomWord('data/adjectives.txt'))) . ucfirst(trim(randomWord('data/nouns.txt'))) ?></h1>
 
-    <p>
-        Five random nouns:
-        <ol>
-            <?php foreach ($coolThings as $thing) {?>
-            <li><?php echo $thing; ?></li>     
-            <?php } ?>
-        </ol>
-    </p>
-</main>
+        <p>
+            Five random nouns:
+            <ol>
+                <?php foreach ($coolThings as $thing) {?>
+                <li><?php echo $thing; ?></li>     
+                <?php } ?>
+            </ol>
+        </p>
+    </main>
 </body>
 </html>
