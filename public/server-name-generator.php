@@ -1,5 +1,4 @@
-<?php  
-
+<?  
     function randomWord($filename) {
         $handle = fopen( $filename, 'r');
         $contents = trim(fread($handle, filesize($filename)));
@@ -15,7 +14,8 @@
         shuffle($wordsArray);
         return $randomWords = array_slice($wordsArray, 0, 5);
     }
-
+    $randomAdjective = strtolower(trim(randomWord('data/adjectives.txt')));
+    $randomNoun = ucfirst(trim(randomWord('data/nouns.txt')));
     $coolThings = coolThings('data/nouns.txt');
 ?>
 <!DOCTYPE html>
@@ -38,14 +38,14 @@
 <body>
     <main class='container'>
         <h1>You should call your server:</h1>
-        <h1><?php echo strtolower(trim(randomWord('data/adjectives.txt'))) . ucfirst(trim(randomWord('data/nouns.txt'))) ?></h1>
+        <h1><?php echo $randomAdjective . $randomNoun ?></h1>
 
         <p>
             Five random nouns:
             <ol>
-                <?php foreach ($coolThings as $thing) {?>
-                <li><?php echo $thing; ?></li>     
-                <?php } ?>
+                <? foreach ($coolThings as $thing):?>
+                <li><?= $thing; ?></li>     
+                <? endforeach; ?>
             </ol>
         </p>
     </main>

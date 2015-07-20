@@ -19,7 +19,7 @@ short
 small 
 tall 
 tiny 
- boiling 
+boiling 
 breezy 
 broken 
 bumpy 
@@ -64,7 +64,6 @@ late
 long 
 modern 
 old 
-old-fashioned 
 quick 
 rapid 
 short 
@@ -83,7 +82,6 @@ cooing
 deafening 
 faint 
 harsh 
-high-pitched 
 hissing 
 hushed 
 husky 
@@ -237,7 +235,7 @@ friendly
 funny 
 gentle 
 glorious 
- good 
+good 
 happy 
 healthy 
 helpful 
@@ -490,7 +488,6 @@ sufficient
 scientific
 eastern
 correct
-inc
 irish
 expensive
 educational
@@ -588,7 +585,6 @@ well
 communist
 yellow
 unusual
-net
 long-term
 tough
 dear
@@ -621,7 +617,6 @@ keen
 flat
 silent
 indian
-video-taped
 worried
 pale
 statutory
@@ -742,7 +737,6 @@ pleasant
 dirty
 structural
 welcome
-so-called
 deaf
 above
 continuous
@@ -833,7 +827,6 @@ electoral
 urgent
 presidential
 controversial
-oral
 everyday
 encouraging
 organic
@@ -851,7 +844,6 @@ superb
 sheer
 disappointed
 frightened
-full-time
 gastric
 capitalist
 romantic
@@ -901,7 +893,6 @@ ridiculous
 amazing
 comparable
 successive
-working-class
 realistic
 back
 decent
@@ -959,7 +950,6 @@ interim
 objective
 splendid
 magic
-short-term
 systematic
 obliged
 payable
@@ -979,7 +969,6 @@ kind
 advisory
 hostile
 precious
-gay
 accessible
 determined
 excited
@@ -988,7 +977,6 @@ provincial
 smart
 endless
 isolated
-post-war
 drunk
 geographical
 like
@@ -1015,7 +1003,6 @@ magnetic
 verbal
 legitimate
 sympathetic
-well-known
 empirical
 head
 shallow
@@ -1033,7 +1020,6 @@ blank
 absent
 favourable
 polish
-israeli
 developed
 profound
 representative
@@ -1096,7 +1082,6 @@ insufficient
 eligible
 mysterious
 varying
-middle-class
 managerial
 molecular
 olympic
@@ -1167,7 +1152,6 @@ toxic
 select
 redundant
 integral
-then
 probable
 amateur
 fond
@@ -1175,7 +1159,6 @@ passing
 specified
 territorial
 horizontal
-old-fashioned
 inland
 cognitive
 regulatory
@@ -1218,7 +1201,6 @@ aggregate
 ethical
 protestant
 teenage
-large-scale
 dying
 disastrous
 delicious
@@ -1317,7 +1299,7 @@ fragile
 helpful 
 helpless 
 important 
- impossible 
+impossible 
 innocent 
 inquisitive 
 modern 
@@ -1337,7 +1319,7 @@ uninterested
 wandering 
 wild 
 wrong 
- adorable 
+adorable 
 alert 
 average 
 beautiful 
