@@ -1,5 +1,5 @@
 <?php
-var_dump($_GET);
+// var_dump($_GET);
 
 function pageController(){
     $data = [];
@@ -41,8 +41,22 @@ extract(pageController());
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Counter</title>
+    <title>Ping/Pong</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        body {
+            background-image: url(img/dark_embroidery.png);
+            font-family: 'VT323';
+            color: white;
+        }
+        .bigbtn {
+            font-size: 2em;
+        }
+        h1 {
+            font-size: 4em;
+        }
+    </style>
 </head>
 <body>
     <main class="container">
@@ -54,9 +68,8 @@ extract(pageController());
     <br>
     <div class='row text-right'>
         <h2>Pong's turn:</h2>
-    <a href="ping.php?hitPong=yes&hitPing=stay&pong=<?= $pong; ?>&ping=<?= $ping; ?>" class="btn btn-default">HIT</a>
-    <br>
-    <a href="ping.php?hitPong=no&hitPing=stay&pong=<?= $pong; ?>&ping=<?= $ping; ?>" class="btn btn-default">MISS</a>
+    <a href="ping.php?hitPong=yes&hitPing=stay&pong=<?= $pong; ?>&ping=<?= $ping; ?>" class="btn btn-default bigbtn">HIT</a>
+    <a href="ping.php?hitPong=no&hitPing=stay&pong=<?= $pong; ?>&ping=<?= $ping; ?>" class="btn btn-default bigbtn">MISS</a>
  </div>
 </main>
 </body>
