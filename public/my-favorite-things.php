@@ -21,7 +21,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>5 Random Nouns</title>
+    <title>5 Things</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <style type="text/css">
@@ -37,7 +37,7 @@
 </head>
 <body>
     <main class='container'>
-        <h1>5 Random Nouns</h1>
+        <h1>5 Things</h1>
         <p>
             Five random nouns:
             <ol>
