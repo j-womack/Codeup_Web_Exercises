@@ -1,10 +1,10 @@
 <?php
 
-var_dump($_POST);
+// var_dump($_POST);
 
 session_start();
-var_dump(session_id());
-var_dump($_SESSION);
+// var_dump(session_id());
+// var_dump($_SESSION);
 
 if (isset($_SESSION['LOGGED_IN_USER'])) {
     header("Location: authorized.php");
@@ -32,17 +32,31 @@ extract(pageController());
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+    body {
+        background-image: url(img/swirl_pattern.png);
+        font-family: 'Libre Baskerville', serif;
+        text-align: center;
+    }
+</style>
+
 </head>
 <body>
-    <h1>Login</h1>
+    <main class="container">
+        <h1>Login</h1>
 
-    <form method="POST" action="login.php">
-        <label>User</label>
-        <input type="text" name="user"><br>
-        <label>Password</label>
-        <input type="password" name="password"><br>
-        <input type="submit">
-    </form>
-
+        <div class="form-group">
+        <form method="POST" action="login.php">
+            
+            <input type="text" class="form-control" name="user" placeholder="Username"><br>
+            
+            <input type="password" class="form-control" name="password" placeholder="Password"><br>
+            <input type="submit" class="btn btn-default">
+        </form>
+        </div>
+    </main>
 </body>
 </html>
