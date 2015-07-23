@@ -1,31 +1,31 @@
 <?php
-// var_dump($_GET);
+require 'functions.php';
 
 function pageController(){
     $data = [];
 
-    if(isset($_GET['ping'])) {
-        if ($_GET['hitPing'] == 'yes') {
+    if(inputHas('ping')) {
+        if (inputGet('hitPing') == 'yes') {
             $_GET['ping']++;
             $data['ping'] = $_GET['ping'];
-        } elseif ($_GET['hitPing'] == 'no') {
+        } elseif (inputGet('hitPing') == 'no') {
             $_GET['ping']--;
             $data['ping'] = $_GET['ping'];
-        } elseif ($_GET['hitPing'] == 'stay') {
+        } elseif (inputGet('hitPing') == 'stay') {
             $data['ping'] = $_GET['ping'];
         }
     } else {
         $data['ping'] = 0;
     }
 
-    if(isset($_GET['pong'])) {
-        if ($_GET['hitPong'] == 'yes') {
+    if(inputHas('pong')) {
+        if (inputGet('hitPong') == 'yes') {
             $_GET['pong']++;
             $data['pong'] = $_GET['pong'];
-        } elseif ($_GET['hitPong'] == 'no') {
+        } elseif (inputGet('hitPong') == 'no') {
             $_GET['pong']--;
             $data['pong'] = $_GET['pong'];
-        } elseif ($_GET['hitPong'] == 'stay') {
+        } elseif (inputGet('hitPong') == 'stay') {
             $data['pong'] = $_GET['pong'];
         }
     } else {
