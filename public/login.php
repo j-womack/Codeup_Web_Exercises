@@ -1,10 +1,7 @@
 <?php
-
-// var_dump($_POST);
-
 session_start();
-// var_dump(session_id());
-// var_dump($_SESSION);
+
+require 'functions.php';
 
 if (isset($_SESSION['LOGGED_IN_USER'])) {
     header("Location: authorized.php");
@@ -16,8 +13,8 @@ function pageController(){
     $data['location'] = 'login.php';
 
     if (!empty($_POST)){
-        if ($_POST['user'] == 'guest' && $_POST['password'] == 'password') {
-            $_SESSION['LOGGED_IN_USER'] = $_POST['user'];
+        if (inputGet('user') == 'guest' && inputGet('password') == 'password') {
+            $_SESSION['LOGGED_IN_USER'] = inputGet('user');
             header("Location: authorized.php");
             exit();
         } 
