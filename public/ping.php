@@ -1,6 +1,6 @@
 <?php
 require 'functions.php';
-require '../input.php';
+require '../Input.php';
 
 function pageController(){
     $data = [];
@@ -32,7 +32,6 @@ function pageController(){
     } else {
         $data['pong'] = 0;
     }
-
         return $data;
 }
 

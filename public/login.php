@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-require 'functions.php';
+require_once 'functions.php';
+require_once '../Auth.php';
 
 if (isset($_SESSION['LOGGED_IN_USER'])) {
     header("Location: authorized.php");
@@ -12,13 +13,11 @@ function pageController(){
     $data = [];
     $data['location'] = 'login.php';
 
-    if (!empty($_POST)){
-        if (inputGet('user') == 'guest' && inputGet('password') == 'password') {
-            $_SESSION['LOGGED_IN_USER'] = inputGet('user');
-            header("Location: authorized.php");
-            exit();
-        } 
-    } 
+    $password = inputGet('password');
+    $userName = inputGet('user');
+
+    Auth::attempt($userName, $password);
+
     return $data;
 }
 
@@ -38,6 +37,11 @@ extract(pageController());
         font-family: 'Libre Baskerville', serif;
         text-align: center;
     }
+    .form-control {
+        width: 66%;
+        margin: auto;
+    }
+
 </style>
 
 </head>
