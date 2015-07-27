@@ -1,31 +1,32 @@
 <?php
 require 'functions.php';
+require '../input.php';
 
 function pageController(){
     $data = [];
 
-    if(inputHas('ping')) {
-        if (inputGet('hitPing') == 'yes') {
+    if(Input::has('ping')) {
+        if (Input::get('hitPing') == 'yes') {
             $_GET['ping']++;
             $data['ping'] = $_GET['ping'];
-        } elseif (inputGet('hitPing') == 'no') {
+        } elseif (Input::get('hitPing') == 'no') {
             $_GET['ping']--;
             $data['ping'] = $_GET['ping'];
-        } elseif (inputGet('hitPing') == 'stay') {
+        } elseif (Input::get('hitPing') == 'stay') {
             $data['ping'] = $_GET['ping'];
         }
     } else {
         $data['ping'] = 0;
     }
 
-    if(inputHas('pong')) {
-        if (inputGet('hitPong') == 'yes') {
+    if(Input::has('pong')) {
+        if (Input::get('hitPong') == 'yes') {
             $_GET['pong']++;
             $data['pong'] = $_GET['pong'];
-        } elseif (inputGet('hitPong') == 'no') {
+        } elseif (Input::get('hitPong') == 'no') {
             $_GET['pong']--;
             $data['pong'] = $_GET['pong'];
-        } elseif (inputGet('hitPong') == 'stay') {
+        } elseif (Input::get('hitPong') == 'stay') {
             $data['pong'] = $_GET['pong'];
         }
     } else {
