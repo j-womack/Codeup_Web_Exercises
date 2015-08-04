@@ -1,5 +1,7 @@
 <?php
 
+// var_dump($_POST);
+
 require_once('../parks_config.php');
 require_once('../db_connect.php');
 require_once('../Input.php');
@@ -163,8 +165,8 @@ $pageDown = $page - 1;
                 <tr>
                     <td><?= $park['name']; ?></td>  
                     <td><?= $park['location']; ?></td>
-                    <td><?= $park['date_established']; ?></td>
-                    <td><?= $park['area_in_acres']; ?></td>  
+                    <td><?= date("m/d/Y", strtotime($park['date_established'])); ?></td>
+                    <td><?= number_format($park['area_in_acres'], 2); ?></td>  
                     <td><?= $park['description']; ?></td>  
                 </tr>
             <? endforeach; ?>
@@ -173,14 +175,16 @@ $pageDown = $page - 1;
 
         <nav>
             <ul class="pager">
-                <? if ($totalParks >= $items_per_page) { ?>        
-                    <? if ($page > 1) { ?>
+                <? if ($totalParks >= $items_per_page) : ?>        
+                    <? if ($page > 1) : ?>
+                        <li class="previous"><a href="national_parks.php?page=1" class="btn btn-default">First Page</a></li>
                         <li class="previous"><a href="national_parks.php?page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
-                    <? } ?>
-                    <? if ($page < $lastPage) { ?>
+                    <? endif; ?>
+                    <? if ($page < $lastPage) : ?>
+                        <li class="next"><a href="national_parks.php?page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
                         <li class="next"><a href="national_parks.php?page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
-                    <? } ?>
-                <? } ?>
+                    <? endif; ?>
+                <? endif; ?>
             </ul>
         </nav>
 
@@ -191,10 +195,10 @@ $pageDown = $page - 1;
             <input type="text" class="form-control" name="name" id="name" placeholder="Name"><br>
             
             <label for="location">Location</label>
-            <select class="form-control">
-                <? foreach ($states as $state){ ?>
+            <select class="form-control" name="location" id="location">
+                <? foreach ($states as $state) : ?>
                     <option value="<?= $state ?>"><?= $state ?></option>
-                <?}?>
+                <? endforeach; ?>
             </select><br>
             
             <label for="date_established">Date Established</label>
