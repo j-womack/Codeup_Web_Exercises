@@ -66,6 +66,8 @@ $states = array(
     "Wyoming" => "Wyoming"
 );
 
+$errors = array();
+
 
 if(Input::has('page')) {
     $page = Input::get('page');
@@ -73,24 +75,46 @@ if(Input::has('page')) {
     $page = 1;
 }
 
-if(Input::get('name') != '' && Input::get('location') != '' && Input::get('date_established') != '' && Input::get('area_in_acres') != '' && Input::get('description') != '') {
-    $name = Input::getString('name');
-    $location = Input::getString('location');
-    $date_established = Input::getDate('date_established');
-    $area_in_acres = Input::getNumber('area_in_acres');
-    $description = Input::getString('description'); 
+    
+    try {
+        $name = Input::getString('name');
+    } catch (Exception $e) {
+        $errors[] = "An error occurred: " . $e->getMessage();
+    }
+    try {
+        $location = Input::getString('location');
+    } catch (Exception $e) {
+        $errors[] = "An error occurred: " . $e->getMessage();
+    }
+    try {
+        $date_established = Input::getDate('date_established');
+    } catch (Exception $e) {
+        $errors[] = "An error occurred: " . $e->getMessage();
+    }
+    try {
+        $area_in_acres = Input::getNumber('area_in_acres');
+    } catch (Exception $e) {
+        $errors[] = "An error occurred: " . $e->getMessage();
+    }
+    try {
+        $description = Input::getString('description'); 
+    } catch (Exception $e) {
+        $errors[] = "An error occurred: " . $e->getMessage();
+    }
 
-    $addStmt = $dbc->prepare('INSERT INTO national_parks(name, location, date_established, area_in_acres, description)
-    VALUES (:name, :location, :date_established, :area_in_acres, :description)');
+    if (empty($errors)) {
+        $addStmt = $dbc->prepare('INSERT INTO national_parks(name, location, date_established, area_in_acres, description)
+        VALUES (:name, :location, :date_established, :area_in_acres, :description)');
 
-    $addStmt->bindValue(':name', $name, PDO::PARAM_STR);
-    $addStmt->bindValue(':location', $location, PDO::PARAM_STR);
-    $addStmt->bindValue(':date_established', $date_established, PDO::PARAM_STR);
-    $addStmt->bindValue(':area_in_acres', $area_in_acres, PDO::PARAM_STR);
-    $addStmt->bindValue(':description', $description, PDO::PARAM_STR);
+        $addStmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $addStmt->bindValue(':location', $location, PDO::PARAM_STR);
+        $addStmt->bindValue(':date_established', $date_established, PDO::PARAM_STR);
+        $addStmt->bindValue(':area_in_acres', $area_in_acres, PDO::PARAM_STR);
+        $addStmt->bindValue(':description', $description, PDO::PARAM_STR);
 
-    $addStmt->execute();
-}
+        $addStmt->execute();
+    }
+
 
 $items_per_page = 5;
 
@@ -144,6 +168,11 @@ $pageDown = $page - 1;
         .pager {
             font-family: 'Libre Baskerville', serif;
         }
+        h3 {
+            text-align: center;
+            color: red;
+
+        }
     </style>
 </head>
 <body>
@@ -184,6 +213,10 @@ $pageDown = $page - 1;
             </ul>
         </nav>
 
+
+        <? foreach ($errors as $error) :?>
+            <h3><?= $error ?></h3>
+        <? endforeach ?>
                
         <br>
         <form method="post">

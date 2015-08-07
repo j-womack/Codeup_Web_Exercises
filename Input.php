@@ -63,8 +63,8 @@ class Input
     public static function getDate($key)
     {
         // Validate the date
-        $d = DateTime::createFromFormat('Y-m-d', $key);
-        $valid =  $d && $d->format('Y-m-d') == $key;
+        $date = DateTime::createFromFormat('Y-m-d', $key);
+        $valid =  $date && $date->format('Y-m-d') == $key;
         if (!$valid) {
             throw new Exception('Not a valid date');
         } 
