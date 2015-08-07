@@ -6,11 +6,11 @@ require_once('../parks_config.php');
 require_once('../db_connect.php');
 require_once('../Input.php');
 
-function validateDate($date)
-{
-    $d = DateTime::createFromFormat('Y-m-d', $date);
-    return $d && $d->format('Y-m-d') == $date;
-}
+// function validateDate($date)
+// {
+//     $d = DateTime::createFromFormat('Y-m-d', $date);
+//     return $d && $d->format('Y-m-d') == $date;
+// }
 
 $states = array(
     "Alabama" => "Alabama",
@@ -74,26 +74,22 @@ if(Input::has('page')) {
 }
 
 if(Input::get('name') != '' && Input::get('location') != '' && Input::get('date_established') != '' && Input::get('area_in_acres') != '' && Input::get('description') != '') {
-    if(validateDate(Input::get('date_established'))) {
-        if(is_numeric(Input::get('area_in_acres'))) {
-            $name = Input::get('name');
-            $location = Input::get('location');
-            $date_established = Input::get('date_established');
-            $area_in_acres = Input::get('area_in_acres');
-            $description = Input::get('description'); 
+    $name = Input::getString('name');
+    $location = Input::getString('location');
+    $date_established = Input::getDate('date_established');
+    $area_in_acres = Input::getNumber('area_in_acres');
+    $description = Input::getString('description'); 
 
-            $addStmt = $dbc->prepare('INSERT INTO national_parks(name, location, date_established, area_in_acres, description)
-            VALUES (:name, :location, :date_established, :area_in_acres, :description)');
+    $addStmt = $dbc->prepare('INSERT INTO national_parks(name, location, date_established, area_in_acres, description)
+    VALUES (:name, :location, :date_established, :area_in_acres, :description)');
 
-            $addStmt->bindValue(':name', $name, PDO::PARAM_STR);
-            $addStmt->bindValue(':location', $location, PDO::PARAM_STR);
-            $addStmt->bindValue(':date_established', $date_established, PDO::PARAM_STR);
-            $addStmt->bindValue(':area_in_acres', $area_in_acres, PDO::PARAM_STR);
-            $addStmt->bindValue(':description', $description, PDO::PARAM_STR);
+    $addStmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $addStmt->bindValue(':location', $location, PDO::PARAM_STR);
+    $addStmt->bindValue(':date_established', $date_established, PDO::PARAM_STR);
+    $addStmt->bindValue(':area_in_acres', $area_in_acres, PDO::PARAM_STR);
+    $addStmt->bindValue(':description', $description, PDO::PARAM_STR);
 
-            $addStmt->execute();
-        }
-    }
+    $addStmt->execute();
 }
 
 $items_per_page = 5;
